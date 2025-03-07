@@ -1,6 +1,6 @@
 import React from "react";
 
-export const ImageGroup = (images) => {
+const ImageGroup = (images) => {
 
     return (
         <div>
@@ -10,7 +10,11 @@ export const ImageGroup = (images) => {
                         <img src={image.urls.small}/>
                     </div>
                 })
+
             }
         </div>
     );
 };
+
+export default ImageGroup;
+

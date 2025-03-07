@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { HomeThunk } from "./homeThunk";
+import homeThunk from "./homeThunk";
 
 
 
@@ -13,14 +13,15 @@ export const HomeSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder
-        .addCase(HomeThunk.pending, (state) => {
+        .addCase(homeThunk.pending, (state) => {
             state.status = 'pending'
         })
-        .addCase(HomeThunk.fulfilled, (state, action) => {
+        .addCase(homeThunk.fulfilled, (state, action) => {
             state.status = 'fulfilled';
+            console.log(action.payload);
             state.data = action.payload;
         })
-        .addCase(HomeThunk.rejected, (state, action) => {
+        .addCase(homeThunk.rejected, (state, action) => {
             state.status = 'rejected';
             state.error = action.error.message;
         })
