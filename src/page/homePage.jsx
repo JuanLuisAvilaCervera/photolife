@@ -14,7 +14,6 @@ const HomePage = () => {
     const imagesStatus = useSelector(getImagesStatus);
 
     useEffect( () => {
-        console.log("Useeffect")
         setIsLoading(true);
         if(!imagesStatus){
             dispatch(homeThunk());

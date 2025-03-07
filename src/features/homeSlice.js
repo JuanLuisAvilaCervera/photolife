@@ -18,7 +18,6 @@ export const HomeSlice = createSlice({
         })
         .addCase(homeThunk.fulfilled, (state, action) => {
             state.status = 'fulfilled';
-            console.log(action.payload);
             state.data = action.payload;
         })
         .addCase(homeThunk.rejected, (state, action) => {

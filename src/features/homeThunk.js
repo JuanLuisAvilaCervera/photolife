@@ -7,7 +7,6 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
         const URL = `https://api.unsplash.com/photos/random/?client_id=1MukAIomcq9R4JyV4VGwGg9K4mxD7Mhp4QmCOxiclpU&count=20`;
         const response = await fetch(URL)
         const data = response.json(); //await response.json
-        console.log(response);
         return data;
 
     } catch (error) {
