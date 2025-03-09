@@ -28,10 +28,12 @@ const HomePage = () => {
 
     return (
         <div>
-            <ImageGroup data={images} type="images"/>
+            {/* <ImageGroup data={images} type="images"/> */}
         </div>
     )
     
 }
+ // CAMBIAR NOMBRE FICHERO A MAYUSCULA
+ // width : maxContent
 
 export default HomePage;

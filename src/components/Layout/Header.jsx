@@ -1,6 +1,7 @@
 import React from "react";
 import CollectionButton from "./CollectionButton";
 import { useNavigate } from "react-router";
+import HeaderIntro from "./HeaderIntro";
 
 const Header = ()  => {
 
@@ -15,7 +16,7 @@ const Header = ()  => {
         <header>
             <p id="appLogo"
                 onClick={handleClick}>PhotoLife</p>
-            {/* <HeaderIntro />*/}
+            <HeaderIntro />
             <CollectionButton /> 
         </header>
     )
