@@ -9,7 +9,8 @@ const CollectionButton = () => {
     let location = useLocation();
 
     const handleClick = () => {
-        navigate("collection");
+
+        location.pathname === "/collection" ? (navigate("")) : (navigate("collection"));
     }
 
     return (

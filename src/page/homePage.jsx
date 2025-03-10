@@ -22,13 +22,14 @@ const HomePage = () => {
             setIsLoading(false);
         }else if(imagesStatus === 'rejected'){
             setIsLoading(false);
-            console.log("Error loading home images")
+            // console.log("Error loading home images")
+            //Mensaje directo al cliente
         }
     }, [dispatch, imagesStatus])
 
     return (
         <div>
-            {/* <ImageGroup data={images} type="images"/> */}
+            <ImageGroup data={images} type="images"/>
         </div>
     )
     
