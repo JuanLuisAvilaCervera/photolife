@@ -28,7 +28,7 @@ const HomePage = () => {
     }, [dispatch, imagesStatus])
 
     return (
-        <div>
+        <div id="main">
             <ImageGroup data={images} type="images"/>
         </div>
     )

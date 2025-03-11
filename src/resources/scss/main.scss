@@ -1,4 +1,5 @@
 @import url(./_images.scss);
+@import url(./_imageGroup.scss);
 @import url(./_header.scss);
 @import url(./_orderSelector.scss);
 
@@ -14,12 +15,9 @@
 
 }
 
-html{
-    background-color: var(--app-green);
-}
-
 
 body{
     margin: 0;
     top:0;
+
 }

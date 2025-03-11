@@ -1,4 +1,89 @@
+.imageContainer{
 
-#imageGroup{
-    background-color: var(--app-light-green);
+    position: relative;
+    width: 90%;
+    height: auto;
+    margin: 0.3rem;
+    margin-left: 5%;
+
+    .image{
+        width: 100%;
+        border-radius: 1rem;
+        vertical-align: bottom;
+
+    }
+
+    .imageHover{
+        position:absolute;
+        width: 100%;
+        height: 100%;
+        background-color: #00000055;
+        top:0;
+        left: 0;
+        border-radius: 1rem;
+        
+
+
+        .saveIcon{
+
+            position: absolute;
+            
+            top:0.5rem;
+            right: 0.5rem;
+            width: 1rem;
+
+        }
+
+        .likeIcon{
+            position: absolute;
+
+            
+            bottom:0.5rem;
+            left: 0.5rem;
+            width: 1rem;
+        }
+
+        .number-likes{
+            position: absolute;
+
+            color: white;
+            font-weight: 600;
+            
+            bottom:0.4rem;
+            left: 1.5rem;
+            width: 1rem;
+
+            margin: 0;
+        }
+
+    }
+
+}
+
+@media only screen and (min-width: 800px){
+    .imageHover{
+        opacity: 0;
+    }
+
+    .imageHover:hover{
+        opacity: 1;
+    }
+}
+
+@media only screen and (min-width: 500px) and (max-width: 800px){
+    .imageContainer{
+        width: calc(90% / 2);
+    }
+}
+
+@media only screen and (min-width: 800px) and (max-width: 1000px){
+    .imageContainer{
+        width: calc(90% / 3);
+    }
+}
+
+@media only screen and (min-width: 1000px){
+    .imageContainer{
+        width: calc(90% / 4);
+    }
 }

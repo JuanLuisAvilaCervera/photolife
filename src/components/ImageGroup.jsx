@@ -1,29 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import OrderSelector from "./OrderSelector";
+
+import Image from "./Image";
 
 const ImageGroup = (images) => {
 
 
-    const handleChange = () => {
-
-    }
-
-
     return (
-        <div id="imageGroup">
+        <div>
             <div id="orderSelectorDiv"><OrderSelector type="selector"/></div>
             {
                 images.data.map((image, index) => {
-                    return <div key={index}>
-                        <img src={image.urls.small}
-                            style={
-                                {
-                                    maxWidth:"95%"
-                                }
-                            }
-                        
-                        />
-                    </div>
+
+                    let props = {
+                        image,
+                        index
+                    }
+                    
+                    return(<Image data={props}/>);
                 })
 
             }
