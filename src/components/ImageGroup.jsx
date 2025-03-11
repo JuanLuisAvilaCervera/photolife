@@ -1,16 +1,35 @@
 import React from "react";
+import OrderSelector from "./OrderSelector";
 
-export const ImageGroup = (images) => {
+const ImageGroup = (images) => {
+
+
+    const handleChange = () => {
+
+    }
+
 
     return (
-        <div>
+        <div id="imageGroup">
+            <div id="orderSelectorDiv"><OrderSelector type="selector"/></div>
             {
                 images.data.map((image, index) => {
                     return <div key={index}>
-                        <img src={image.urls.small}/>
+                        <img src={image.urls.small}
+                            style={
+                                {
+                                    maxWidth:"95%"
+                                }
+                            }
+                        
+                        />
                     </div>
                 })
+
             }
         </div>
     );
 };
+
+export default ImageGroup;
+

@@ -1,0 +1,25 @@
+@import url(./_images.scss);
+@import url(./_header.scss);
+@import url(./_orderSelector.scss);
+
+:root{
+    --app-dark-green: #257A58;
+    --app-green: #36A076;
+    --app-light-green: #AEF8DA;
+
+    font-family: Josefin Slab;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 100%;
+
+}
+
+html{
+    background-color: var(--app-green);
+}
+
+
+body{
+    margin: 0;
+    top:0;
+}
