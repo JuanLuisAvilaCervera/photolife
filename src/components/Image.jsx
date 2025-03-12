@@ -13,7 +13,7 @@ const Image = (props) => {
 
     const [saveIcon , setSaveIcon] = useState(save);
 
-    const [savedImages, setSavedImages ] = useState([])
+    const [savedImages, setSavedImages] = useState(JSON.parse(localStorage.getItem('savedImages')) || [])
 
 
     const [isSaved , setSaved] = useState(false);
@@ -23,50 +23,61 @@ const Image = (props) => {
 
         let tempImage = {...image};
 
-        console.log(isSaved);
+        tempImage.saved = isSaved;
+
 
 
         if(isSaved){
 
-            console.log()
 
-            setSavedImages(JSON.parse(getSaved()));
+            
 
             setSaveIcon(saved);
 
             tempImage.saved = true;
 
-            setSavedImages([...savedImages, JSON.stringify(tempImage)]);
+            setSavedImages([...savedImages, tempImage]);
 
-        }else if(savedImages && !isSaved){
 
-            setSavedImages(JSON.parse(getSaved()));
+
+        }else
+         if(savedImages.length && !isSaved){
 
             setSaveIcon(save);
 
-            tempImage.saved = false;
 
-            setSavedImages(...savedImages.splice(...savedImages.filter(!saved)));
+            setSavedImages([...savedImages.splice(...savedImages.filter((stringImg) => {
+                let img = JSON.parse(stringImg);
+
+                if(img.id === tempImage.id){
+                    return true;
+                }else{
+                    return false;
+                }
+
+            }))]);
+
+
 
         }
 
-
-        localStorage.setItem('savedImages', JSON.stringify(savedImages));
-
-
     }, [isSaved])
+
+    useEffect( () => {
+
+        console.log(savedImages);
+
+        if(savedImages.length){
+            localStorage.setItem('savedImages', JSON.stringify(savedImages));
+        }
+
+    }, [savedImages])
+
 
     const toggleSaved = () => {
         setSaved(!isSaved);
     }
 
-    const getSaved = () => {
-        if(!localStorage.getItem('savedImages')){
-            localStorage.setItem('savedImages',"[]")
-        }
-
-        return localStorage.getItem('savedImages');
-    }
 
     return <div className="imageContainer">
                 <img className="image" src={image.urls.small}/>
