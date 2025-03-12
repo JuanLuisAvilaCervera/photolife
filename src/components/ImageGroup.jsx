@@ -11,13 +11,8 @@ const ImageGroup = (images) => {
             <div id="orderSelectorDiv"><OrderSelector type="selector"/></div>
             {
                 images.data.map((image, index) => {
-
-                    let props = {
-                        image,
-                        index
-                    }
                     
-                    return(<Image data={props}/>);
+                    return(<Image data={image} key={index}/>);
                 })
 
             }

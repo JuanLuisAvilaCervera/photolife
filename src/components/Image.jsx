@@ -8,10 +8,8 @@ import saved from "../resources/img/savedIcon.png";
 
 const Image = (props) => {
 
-
-
-    var image = props.data.image;
-    const index = props.data.index;
+    const image = props.data;
+    
 
     const [saveIcon , setSaveIcon] = useState(save);
 
@@ -22,39 +20,44 @@ const Image = (props) => {
 
 
     useEffect ( () => {
+
+        let tempImage = {...image};
+
+        console.log(isSaved);
+
+
         if(isSaved){
 
-            setSaveIcon(save);
+            console.log()
 
-            let savedImages = JSON.parse(getSaved());
+            setSavedImages(JSON.parse(getSaved()));
 
-            console.log(savedImages);
-
-            console.log(image);
-
-            let tempImage = JSON.parse(JSON.stringify(image));
+            setSaveIcon(saved);
 
             tempImage.saved = true;
 
-            Object.preventExtensions(tempImage);
+            setSavedImages([...savedImages, JSON.stringify(tempImage)]);
 
-            console.log(tempImage);
+        }else if(savedImages && !isSaved){
 
-            // savedImages = [...savedImages, JSON.stringify(image)];
+            setSavedImages(JSON.parse(getSaved()));
 
-            // localStorage.setItem('savedImages', savedImages);
+            setSaveIcon(save);
+
+            tempImage.saved = false;
+
+            setSavedImages(...savedImages.splice(...savedImages.filter(!saved)));
 
         }
+
+
+        localStorage.setItem('savedImages', JSON.stringify(savedImages));
+
+
     }, [isSaved])
 
     const toggleSaved = () => {
         setSaved(!isSaved);
-
-        if(isSaved){
-            setSaveIcon(saved);
-        }else{
-            setSaveIcon(save);
-        }
     }
 
     const getSaved = () => {
@@ -66,7 +69,7 @@ const Image = (props) => {
     }
 
     return <div className="imageContainer">
-                <img className="image" src={image.urls.small} key={index}/>
+                <img className="image" src={image.urls.small}/>
                 <div className="imageHover">
                     <img className="saveIcon" src={saveIcon} alt="Save in My Collection"
                         onClick={toggleSaved} />
