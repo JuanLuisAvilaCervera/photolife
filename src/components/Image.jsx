@@ -12,71 +12,72 @@ const Image = (props) => {
     
 
     const [saveIcon , setSaveIcon] = useState(save);
+    const [isSaved , setSaved] = useState( () => {
+        const imgList = JSON.parse(localStorage.getItem('savedImages')) || [];
 
-    const [savedImages, setSavedImages] = useState(JSON.parse(localStorage.getItem('savedImages')) || [])
+        return imgList.filter((img) => img.id === image.id).length
+        
+    });
 
 
-    const [isSaved , setSaved] = useState(false);
+    const [likeIcon , setLikeIcon] = useState(like);
+    const [isLiked , setLiked] = useState(false);
+
 
 
     useEffect ( () => {
-
         let tempImage = {...image};
 
         tempImage.saved = isSaved;
 
-
+        const savedImages = JSON.parse(localStorage.getItem('savedImages') ) || [];
 
         if(isSaved){
-
-
+            setSaveIcon(saved);
             
 
-            setSaveIcon(saved);
+            if(!savedImages.filter( (img) => tempImage.id === img.id).length){
+                savedImages.unshift(tempImage);
+            }
 
-            tempImage.saved = true;
+            localStorage.setItem('savedImages',JSON.stringify(savedImages));
 
-            setSavedImages([...savedImages, tempImage]);
-
-
-
-        }else
-         if(savedImages.length && !isSaved){
+        }else{
+            
+            localStorage.setItem('savedImages',JSON.stringify(savedImages.filter((img) => (img.id !== tempImage.id))));
 
             setSaveIcon(save);
-
-
-            setSavedImages([...savedImages.splice(...savedImages.filter((stringImg) => {
-                let img = JSON.parse(stringImg);
-
-                if(img.id === tempImage.id){
-                    return true;
-                }else{
-                    return false;
-                }
-
-            }))]);
-
-
-
         }
 
     }, [isSaved])
 
     useEffect( () => {
-
-        console.log(savedImages);
-
-        if(savedImages.length){
-            localStorage.setItem('savedImages', JSON.stringify(savedImages));
+        if(isLiked){
+            setLikeIcon(liked);
+        }else{
+            setLikeIcon(like);
         }
+    }, [isLiked])
 
-    }, [savedImages])
 
 
     const toggleSaved = () => {
         setSaved(!isSaved);
+
+        // if(!isSaved){
+        //     sliceImages();
+        // }
     }
+    const toggleLiked = () => {
+        setLiked(!isLiked);
+    }
+
+    // const sliceImages = () => {
+
+    //     let tempImage = {...image};
+
+    //     localStorage.setItem('savedImages', []);
+    // }
 
 
     return <div className="imageContainer">
@@ -84,7 +85,8 @@ const Image = (props) => {
                 <div className="imageHover">
                     <img className="saveIcon" src={saveIcon} alt="Save in My Collection"
                         onClick={toggleSaved} />
-                    <img className="likeIcon" src={like} alt="Like this image" />
+                    <img className="likeIcon" src={likeIcon} alt="Like this image"
+                        onClick={toggleLiked}/>
                     <p className="number-likes">35</p>
                 </div>
             </div>

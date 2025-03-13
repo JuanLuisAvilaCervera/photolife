@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
 
-const homeThunk = createAsyncThunk("images/getImages", async () => {
+const favoriteThunk = createAsyncThunk("favorites/getFavorites", async () => {
     try {
         
         const URL = `https://api.unsplash.com/photos/random/?client_id=XJRRzTbfbe5AjXyOB0P12vubcHla7uqMRIn7P8fN6m0&count=20`; 
@@ -17,4 +17,4 @@ const homeThunk = createAsyncThunk("images/getImages", async () => {
 )
 
 
-export default homeThunk;
+export default favoriteThunk;

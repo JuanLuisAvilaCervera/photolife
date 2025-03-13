@@ -8,21 +8,21 @@ const HomePage = () => {
 
     const [images, setImages] = useState([]);
     const dispatch = useDispatch();
-    const [isLoading, setIsLoading] = useState(false);
+    // const [isLoading, setIsLoading] = useState(false);
 
     const imagesData = useSelector(getImagesData);
     const imagesStatus = useSelector(getImagesStatus);
 
     useEffect( () => {
-        setIsLoading(true);
+        // setIsLoading(true);
         if(!imagesStatus){
             dispatch(homeThunk());
         }else if(imagesStatus === 'fulfilled'){
             setImages(imagesData)
-            setIsLoading(false);
+            // setIsLoading(false);
         }else if(imagesStatus === 'rejected'){
-            setIsLoading(false);
-            // console.log("Error loading home images")
+            // setIsLoading(false);
+            console.log("Error loading home images")
             //Mensaje directo al cliente
         }
     }, [dispatch, imagesStatus])
