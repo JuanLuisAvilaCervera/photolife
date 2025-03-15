@@ -1,6 +1,8 @@
 @import url(./_images.scss);
+@import url(./_imageGroup.scss);
 @import url(./_header.scss);
 @import url(./_orderSelector.scss);
+@import url(./_modal.scss);
 
 :root{
     --app-dark-green: #257A58;
@@ -14,12 +16,9 @@
 
 }
 
-html{
-    background-color: var(--app-green);
-}
-
 
 body{
     margin: 0;
     top:0;
+
 }

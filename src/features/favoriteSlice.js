@@ -1,9 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
-import homeThunk from "./homeThunk";
+import favoriteThunk from "./homeThunk";
 
  
 
-export const HomeSlice = createSlice({
+export const FavoriteSlice = createSlice({
 
     name: 'images',
     initialState: {
@@ -13,14 +13,14 @@ export const HomeSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder
-        .addCase(homeThunk.pending, (state) => {
+        .addCase(favoriteThunk.pending, (state) => {
             state.status = 'pending'
         })
-        .addCase(homeThunk.fulfilled, (state, action) => {
+        .addCase(favoriteThunk.fulfilled, (state, action) => {
             state.status = 'fulfilled';
             state.data = action.payload;
         })
-        .addCase(homeThunk.rejected, (state, action) => {
+        .addCase(favoriteThunk.rejected, (state, action) => {
             state.status = 'rejected';
             state.error = action.error.message;
         })
@@ -28,6 +28,6 @@ export const HomeSlice = createSlice({
     
 })
 
-export const getImagesData = ( state ) => state.images.data
-export const getImagesStatus = (state) => state.images.status
-export const getImagesError = (state) => state.images.error
+export const getFavoritesData = ( state ) => state.images.data
+export const getFavoritesStatus = (state) => state.images.status
+export const getFavoritesError = (state) => state.images.error

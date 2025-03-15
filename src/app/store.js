@@ -1,12 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { HomeSlice } from "../features/homeSlice";
-import { CollectionSlice } from "../features/collectionSlice";
+import { FavoriteSlice } from "../features/favoriteSlice";
 
 
 export const Store = configureStore ({
     reducer: {
         images: HomeSlice.reducer,
-        favorites: CollectionSlice.reducer
+        favorites: FavoriteSlice.reducer
     }
 
 })
